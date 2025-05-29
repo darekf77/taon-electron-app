@@ -3,6 +3,9 @@
   "version": "v19",
 
   "packageJsonOverride": {
-    "private": true
+    "author": "Dariusz Filipiak",
+    "private": true,
+
+    "scripts": {}
   }
 }
