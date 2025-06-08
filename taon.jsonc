@@ -1,11 +1,12 @@
 {
   "type": "isomorphic-lib",
   "version": "v19",
+  "appId": "com.domain.example.taon-electron-app",
 
   "packageJsonOverride": {
     "author": "Dariusz Filipiak",
     "private": true,
-
-    "scripts": {}
+    "scripts": {},
+    "description": "Description for taon-electron-app. Hello world!"
   }
 }
