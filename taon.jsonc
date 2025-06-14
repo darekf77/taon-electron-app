@@ -5,8 +5,8 @@
 
   "packageJsonOverride": {
     "author": "Dariusz Filipiak",
+    "description": "Description for taon-electron-app. Hello world!",
     "private": true,
-    "scripts": {},
-    "description": "Description for taon-electron-app. Hello world!"
+    "scripts": {}
   }
 }
