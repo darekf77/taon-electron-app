@@ -21,18 +21,25 @@ console.log('Your server will start on port ' + HOST_URL.split(':')[2]);
 @Component({
   selector: 'app-taon-electron-app',
   standalone: false,
-  template: `hello from taon-electron-app<br>
-    Angular version: {{ angularVersion }}<br>
-    <br>
+  template: `hello from taon-electron-app<br />
+    Angular version: {{ angularVersion }}<br />
+    <br />
     users from backend
     <ul>
-      <li *ngFor="let user of (users$ | async)"> {{ user | json }} </li>
-    </ul>
-  `,
-  styles: [` body { margin: 0px !important; } `],
+      <li *ngFor="let user of users$ | async">{{ user | json }}</li>
+    </ul> `,
+  styles: [
+    `
+      body {
+        margin: 0px !important;
+      }
+    `,
+  ],
 })
 export class TaonElectronAppComponent {
-  angularVersion = VERSION.full + ` mode: ${UtilsOs.isRunningInWebSQL() ? ' (websql)' : '(normal)'}`;
+  angularVersion =
+    VERSION.full +
+    ` mode: ${UtilsOs.isRunningInWebSQL() ? ' (websql)' : '(normal)'}`;
   userApiService = inject(UserApiService);
   readonly users$: Observable<User[]> = this.userApiService.getAll();
 }
@@ -42,15 +49,14 @@ export class TaonElectronAppComponent {
 //#region  taon-electron-app api service
 //#region @browser
 @Injectable({
-  providedIn:'root'
+  providedIn: 'root',
 })
 export class UserApiService {
-  userController = Taon.inject(()=> MainContext.getClass(UserController))
+  userController = Taon.inject(() => MainContext.getClass(UserController));
   getAll() {
-    return this.userController.getAll()
-      .received
-      .observable
-      .pipe(map(r => r.body.json));
+    return this.userController
+      .getAll()
+      .received.observable.pipe(map(r => r.body.json));
   }
 }
 //#endregion
@@ -64,23 +70,25 @@ export class UserApiService {
       provide: TAON_CONTEXT,
       useValue: MainContext,
     },
-    providePrimeNG({ // inited ng prime - remove if not needed
+    providePrimeNG({
+      // inited ng prime - remove if not needed
       theme: {
-        preset: Aura
-      }
-    })
+        preset: Aura,
+      },
+    }),
   ],
   exports: [TaonElectronAppComponent],
   imports: [
     CommonModule,
-    MaterialCssVarsModule.forRoot({  // inited angular material - remove if not needed
+    MaterialCssVarsModule.forRoot({
+      // inited angular material - remove if not needed
       primary: '#4758b8',
       accent: '#fedfdd',
-   }),
+    }),
   ],
   declarations: [TaonElectronAppComponent],
 })
-export class TaonElectronAppModule { }
+export class TaonElectronAppModule {}
 //#endregion
 //#endregion
 
@@ -97,7 +105,7 @@ class User extends Taon.Base.AbstractEntity {
 //#region  taon-electron-app controller
 @Taon.Controller({ className: 'UserController' })
 class UserController extends Taon.Base.CrudController<User> {
-  entityClassResolveFn = ()=> User;
+  entityClassResolveFn = () => User;
   //#region @websql
   /**
    * @deprecated use migrations instead
@@ -112,11 +120,11 @@ class UserController extends Taon.Base.CrudController<User> {
 //#endregion
 
 //#region  taon-electron-app context
-var MainContext = Taon.createContext(()=>({
+var MainContext = Taon.createContext(() => ({
   host: HOST_URL,
   frontendHost: FRONTEND_HOST_URL,
   contextName: 'MainContext',
-  contexts:{ BaseContext },
+  contexts: { BaseContext },
   migrations: {
     // PUT TAON MIGRATIONS HERE
   },
@@ -134,12 +142,12 @@ var MainContext = Taon.createContext(()=>({
 //#endregion
 
 async function start() {
-
   await MainContext.initialize();
 
   if (Taon.isBrowser) {
-    const users = (await MainContext.getClassInstance(UserController).getAll().received)
-      .body?.json;
+    const users = (
+      await MainContext.getClassInstance(UserController).getAll().received
+    ).body?.json;
     console.log({
       'users from backend': users,
     });

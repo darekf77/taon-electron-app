@@ -7,43 +7,54 @@
       "url": "./taon-config-standalone.schema.json"
     }
   ],
+
   "window.title": "npm/taon-dev/taon-electron-app  [ ${activeEditorShort} ]",
+
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": false
   },
+
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": false
   },
+
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": false
   },
+
   "[json5]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": false
   },
+
   "[scss]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": false
   },
+
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": false
   },
+
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": false
   },
+
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": false
   },
+
   "editor.rulers": [
     80,
     120
   ],
+
   "eslint.migration.2_x": "off",
   "eslint.enable": true,
   "prettier.enable": true,
@@ -52,9 +63,11 @@
   "prettier.prettierPath": "./node_modules/prettier",
   "prettier.endOfLine": "auto",
   "search.useIgnoreFiles": false,
+
   "search.include": [
     "**/src/**"
   ],
+
   "search.exclude": {
     "bin": true,
     "local_release": true,
@@ -82,76 +95,77 @@
     "**/.firedev": true,
     "**/.taon": true,
     "**/.tnp": true,
-    "projects": true
+    "projects": true,
+    "dist-*": true,
+    "**/dist-*": true
   },
+
   "files.exclude": {
-    "**/*____ORIGINAL____.ts": true,
     "_changelog": true,
-    "*.sh": true,
-    "*.xlsx": true,
-    "scripts": true,
-    "**/node_modules": true,
-    "**/tmp*": true,
-    "**/dist*": true,
-    "**/browser": true,
-    "**/websql": true,
-    "**/websql*": true,
-    "**/module*": true,
-    "**/backup": true,
-    "**/module": true,
-    "**/www": true,
-    "**/Thumbs.db": true,
-    "**/.DS_Store": true,
-    "**/**/.DS_Store": true,
-    "**/npm-debug.log*": true,
-    "**/.sass-cache": true,
-    "**/.sourcemaps": true,
-    "**/tsconfig.isomorphic.json": true,
-    "**/tsconfig.isomorphic-flat-dist.json": true,
-    "**/tsconfig.browser.json": true,
-    "**/tsconfig.json": true,
-    "**/tsconfig.backend.dist.json": true,
-    "**/projects/tmp*": true,
-    "**/.gitignore": true,
-    "**/.npmignore": true,
-    "**/.babelrc": true,
-    "**/.npmrc": true,
-    "**/.prettierignore": true,
-    "**/.prettierrc": true,
-    "**/.editorconfig": true,
-    "**/devDependencies.json": true,
-    "**/package.json": true,
-    "**/logo.svg": true,
-    ".firedev": true,
-    ".taon": true,
-    ".tnp": true,
-    "**/*.filetemplate": true,
-    "**/tsconfig.*": true,
-    "**/tslint.*": true,
-    "**/recent.json": true,
-    "**/angular.json": true,
-    "**/webpack*": true,
-    "**/run-*": true,
-    "**/run.*": true,
-    "**/package-lock.json": true,
-    "**/protractor.conf.js": true,
-    "**/karma.conf.js": true,
-    "**/eslint.config.js": true,
-    "**/update-vscode-package-json.js": true,
-    "**/.eslintrc.json": true,
-    "**/docs-config.schema.json": true,
-    "**/taon-config-standalone.schema.json": true,
-    "**/taon-config-container.schema.json": true,
-    "**/index.js": true,
-    "**/index.d.ts": true,
-    "**/index.js.map": true
+    ".sass-cache": true,
+    ".sourcemaps": true,
+    ".DS_Store": true,
+    "npm-debug.log": true,
+    "yarn-error.log": true,
+    "testem.log": true,
+    "connect.lock": true,
+    "node_modules": true,
+    "libpeerconnection.log": true,
+    "dist": true,
+    "coverage": true,
+    "Thumbs.db": true,
+    "browser": true,
+    "websql": true,
+    "dist-nocutsrc": true,
+    "package-lock.json": true,
+    "chrome-profiler-events*.json": true,
+    "speed-measure-plugin*.json": true,
+    "tmp*": true,
+    "npm-debug.log*": true,
+    "*.filetemplate": true,
+    ".gitignore": true,
+    "package.json": true,
+    ".npmignore": true,
+    ".babelrc": true,
+    ".editorconfig": true,
+    "eslint.config.js": true,
+    "protractor.conf.js": true,
+    "karma.conf.js": true,
+    ".prettierc": true,
+    "angular.json": true,
+    ".prettierrc.json": true,
+    ".eslintrc.json": true,
+    ".npmrc": true,
+    ".prettierignore": true,
+    ".prettierrc": true,
+    "run.js": true,
+    "index.d.ts": true,
+    "index.js": true,
+    "index.js.map": true,
+    "update-vscode-package-json.js": true,
+    "tsconfig*": true,
+    "webpack.*": true,
+    "tslint.*": true,
+    "*.schema.json": true
   },
+
   "workbench.colorCustomizations": {
     "activityBar.background": "#b65dc6",
     "statusBar.background": "#46ddd8",
     "statusBar.debuggingBackground": "#15d8ff"
   },
+
   "files.watcherExclude": {
     "local_release/**": true
+  },
+
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": false
+  },
+
+  "[dockercompose]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": false
   }
 }
