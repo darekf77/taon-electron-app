@@ -2,6 +2,7 @@
   "type": "isomorphic-lib",
   "version": "v19",
   "appId": "com.domain.example.taon-electron-app",
+  "autoReleaseConfigAllowedItems": [],
 
   "packageJsonOverride": {
     "author": "Dariusz Filipiak",
