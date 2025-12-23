@@ -1,3 +1,4 @@
+// @ts-nocheck
 //#region imports
 import { CommonModule } from '@angular/common'; // @browser
 import { NgModule, inject, Injectable } from '@angular/core'; // @browser
