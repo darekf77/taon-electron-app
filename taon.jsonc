@@ -2,7 +2,22 @@
   "type": "isomorphic-lib",
   "version": "v21",
   "appId": "com.domain.example.taon-electron-app",
-  "autoReleaseConfigAllowedItems": [],
+  "autoReleaseConfigAllowedItems": [
+    // {
+    //   "artifactName": "npm-lib-and-cli-tool",
+    //   "taskName": "npm",
+    // },
+    // {
+    //   "artifactName": "angular-node-app",
+    //   "releaseType": "static-pages",
+    //   "taskName": "static-pages",
+    // },
+    {
+      "artifactName": "angular-node-app",
+      "releaseType": "manual",
+      "taskName": "local",
+    },
+  ],
 
   "packageJsonOverride": {
     "author": "Dariusz Filipiak",
