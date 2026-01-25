@@ -19,7 +19,10 @@
 /databases/*.sqlite
 /dist
 /dist-nocutsrc
+/dist-nocutsrc-prod
+/dist-prod
 /docs-config.schema.json
+/eslint-rules
 /libpeerconnection.log
 /local_release
 /node_modules
@@ -33,7 +36,7 @@
 /src/assets/shared/shared_folder_info.txt
 /src/lib/env/**/*.*
 /src/lib/lib-info.md
-/src/migrations/migrations-info.md
+/src/lib/migrations/migrations-info.md
 /src/tests/mocha-tests-info.md
 /src/vars.scss
 /testem.log

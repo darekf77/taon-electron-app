@@ -5,7 +5,7 @@ const env: Partial<EnvOptions> = {
   ...baseEnv,
   build: {
     ...baseEnv.build,
-    angularProd: true,
+    ssr: true,
   },
 };
 export default env;

@@ -5353,11 +5353,11 @@
         },
         "storeGeneratedAssetsInRepository": {
           "type": "boolean",
-          "default": "false\nBy default generated assets from logo.png are not stored\nin repository"
+          "default": "false\r\nBy default generated assets from logo.png are not stored\r\nin repository"
         },
         "storeLocalReleaseFilesInRepository": {
           "type": "boolean",
-          "default": "true\nBy default local release files are stored in repository"
+          "default": "true\r\nBy default local release files are stored in repository"
         },
         "dependenciesNamesForNpmLib": {
           "type": "array",
@@ -5374,6 +5374,13 @@
           "description": "Same as dependenciesNamesForNpmLib but these dependencies are isomorphic (can be used in browser and node)"
         },
         "peerDependenciesNamesForNpmLib": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "At beginning after node_modules installation taon is checking is packages are installed - if not it will throw error. Also.. this peerDependencies are going to be included in released npm lib as peerDependencies."
+        },
+        "devDependenciesNamesForNpmLib": {
           "type": "array",
           "items": {
             "type": "string"
@@ -5437,6 +5444,10 @@
           "type": "boolean",
           "description": "generate src/lib/index._auto-generated_.ts with all exports from lib ts files"
         },
+        "shouldGenerateAutogenAppRoutesFile": {
+          "type": "boolean",
+          "description": "generate src/app.ts routes, imports and context initializations from ./src/app/*.routes.ts (recursive)"
+        },
         "autoReleaseConfigAllowedItems": {
           "type": "array",
           "items": {
@@ -5447,11 +5458,13 @@
       },
       "required": [
         "dependenciesNamesForNpmLib",
+        "devDependenciesNamesForNpmLib",
         "isCoreProject",
         "isomorphicDependenciesForNpmLib",
         "optionalDependenciesNamesForNpmLib",
         "packageJsonOverride",
         "peerDependenciesNamesForNpmLib",
+        "shouldGenerateAutogenAppRoutesFile",
         "shouldGenerateAutogenIndexFile",
         "singleFileBundlingPackages",
         "type"
@@ -5467,8 +5480,8 @@
         "v4",
         "v16",
         "v18",
-        "v21",
-        "v21",
+        "v19",
+        "v20",
         "v21",
         "v22"
       ]
@@ -6343,15 +6356,7 @@
         {
           "type": "array",
           "items": {
-            "type": "string",
-            "enum": [
-              "npm-lib-and-cli-tool",
-              "angular-node-app",
-              "electron-app",
-              "mobile-app",
-              "vscode-plugin",
-              "docs-webapp"
-            ]
+            "$ref": "#/definitions/ReleaseArtifactTaon"
           }
         },
         {
@@ -6360,47 +6365,31 @@
         }
       ]
     },
+    "ReleaseArtifactTaon": {
+      "type": "string",
+      "enum": [
+        "npm-lib-and-cli-tool",
+        "angular-node-app",
+        "electron-app",
+        "mobile-app",
+        "vscode-plugin",
+        "docs-webapp"
+      ],
+      "description": "All possible release types for taon for MANUAL/CLOUD release"
+    },
     "Models.TaonAutoReleaseItem": {
       "type": "object",
       "properties": {
         "artifactName": {
-          "type": "string",
-          "enum": [
-            "npm-lib-and-cli-tool",
-            "angular-node-app",
-            "electron-app",
-            "mobile-app",
-            "vscode-plugin",
-            "docs-webapp"
-          ]
+          "$ref": "#/definitions/ReleaseArtifactTaon"
         },
         "envName": {
-          "type": "string",
-          "enum": [
-            "localhost",
-            "dev",
-            "stage",
-            "prod",
-            "test",
-            "qa",
-            "sandbox",
-            "uat",
-            "preprod",
-            "demo",
-            "docs",
-            "static-pages",
-            "ci",
-            "training"
-          ],
+          "$ref": "#/definitions/CoreModels.EnvironmentName",
           "description": "if not proviede default  env.<artifact-name>.__.ts will be in use"
         },
         "envNumber": {
           "type": "number",
           "description": "example for dev environtment > undefined - env.<artifact-name>.dev.ts > 1 - env.<artifact-name>.dev1.ts > 2 - env.<artifact-name>.dev2.ts ..."
-        },
-        "skip": {
-          "type": "boolean",
-          "description": "skip release of this artifact"
         },
         "releaseType": {
           "$ref": "#/definitions/ReleaseType",
@@ -6413,6 +6402,10 @@
         "taskName": {
           "type": "string",
           "description": "friendly name of item in auto release list configuration"
+        },
+        "description": {
+          "type": "string",
+          "description": "Short description of auto release item"
         }
       },
       "required": [
@@ -6420,6 +6413,27 @@
         "taskName"
       ],
       "additionalProperties": false
+    },
+    "CoreModels.EnvironmentName": {
+      "type": "string",
+      "enum": [
+        "__",
+        "localhost",
+        "dev",
+        "stage",
+        "prod",
+        "test",
+        "qa",
+        "sandbox",
+        "uat",
+        "preprod",
+        "demo",
+        "docs",
+        "static-pages",
+        "ci",
+        "training",
+        "staging"
+      ]
     },
     "ReleaseType": {
       "type": "string",
